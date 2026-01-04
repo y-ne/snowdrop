@@ -30,6 +30,11 @@ defmodule SnowdropWeb.Router do
     resources "/users", UserController
     resources "/posts", PostController, only: [:index, :show]
     resources "/comments", CommentController, except: [:delete]
+
+    # Implementation of Routing -> Nested Routes
+    resources "/nest1", Nest1Controller do
+      resources "/nest2", Nest2Controller
+    end
   end
 
   # Other scopes may use custom stacks.
