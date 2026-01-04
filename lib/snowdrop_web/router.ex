@@ -18,6 +18,9 @@ defmodule SnowdropWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    # Creating New Route from docs
+    get "/hello", HelloController, :index
   end
 
   # Other scopes may use custom stacks.
