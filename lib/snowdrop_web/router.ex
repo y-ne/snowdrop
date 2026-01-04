@@ -24,6 +24,12 @@ defmodule SnowdropWeb.Router do
     # Creating New Route from docs
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
+
+    # Implementation of Routing -> Resources
+    # for checking with mix phx.routes
+    resources "/users", UserController
+    resources "/posts", PostController, only: [:index, :show]
+    resources "/comments", CommentController, except: [:delete]
   end
 
   # Other scopes may use custom stacks.
