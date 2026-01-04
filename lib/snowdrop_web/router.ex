@@ -8,6 +8,8 @@ defmodule SnowdropWeb.Router do
     plug :put_root_layout, html: {SnowdropWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    # Implementation from Plug -> Module Plug
+    plug SnowdropWeb.Plugs.Locale, "en"
   end
 
   pipeline :api do
