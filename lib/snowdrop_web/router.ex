@@ -35,12 +35,27 @@ defmodule SnowdropWeb.Router do
     resources "/nest1", Nest1Controller do
       resources "/nest2", Nest2Controller
     end
+
+    resources "/reviews", ReviewController
   end
 
   # Other scopes may use custom stacks.
   # scope "/api", SnowdropWeb do
   #   pipe_through :api
   # end
+
+  # Implementation Routing -> Scoped Routes
+  scope "/admin", SnowdropWeb.Admin do
+    pipe_through :browser
+
+    resources "/reviews", ReviewController
+
+    # scope can also be nested
+    scope "/v1", V1 do
+      resources "/images", ImageController
+      resources "/users", UserController
+    end
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:snowdrop, :dev_routes) do
