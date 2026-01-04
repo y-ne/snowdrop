@@ -51,5 +51,18 @@ defmodule SnowdropWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+
+  # implementation of Plug -> Function Plug from docs
+  plug :introspect
   plug SnowdropWeb.Router
+
+  def introspect(conn, _opts) do
+    IO.puts("""
+    Verb: #{inspect(conn.method)}
+    Host: #{inspect(conn.host)}
+    Headers: #{inspect(conn.req_headers)}
+    """)
+
+    conn
+  end
 end
