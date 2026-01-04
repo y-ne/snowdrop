@@ -21,6 +21,7 @@ defmodule SnowdropWeb.Router do
 
     # Creating New Route from docs
     get "/hello", HelloController, :index
+    get "/hello/:messenger", HelloController, :show
   end
 
   # Other scopes may use custom stacks.
